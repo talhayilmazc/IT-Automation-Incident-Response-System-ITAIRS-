@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ITAIRS Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>IT Automation &amp; Incident Response System</h1>
+      <p>Lightweight dashboard for system info, incidents, and events</p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>System Info</h2>
+        <div id="system-info">
+          <p>Hostname: <span id="hostname">-</span></p>
+          <p>OS: <span id="os">-</span></p>
+          <p>Uptime: <span id="uptime">-</span></p>
+          <p>CPU: <span id="cpu">-</span>%</p>
+          <p>Memory: <span id="memory">-</span>%</p>
+          <p>Disk: <span id="disk">-</span>%</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Recent Incidents</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Time (UTC)</th>
+              <th>Severity</th>
+              <th>Source</th>
+              <th>Category</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody id="incidents-table"></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>Recent Events</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Time (UTC)</th>
+              <th>Level</th>
+              <th>Source</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody id="events-table"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
