@@ -1,53 +1,88 @@
-# IT Automation & Incident Response System (ITAIRS)
+# End-to-End Machine Learning Pipeline with Evaluation and API Deployment
 
-A professional-grade **IT Automation & Incident Response Platform** designed to simulate real enterprise help desk and sysadmin workflows.
+<p align="center">
+  <em>
+    An end-to-end machine learning system covering data preprocessing, model evaluation,
+    and deployment of trained models as a RESTful inference service.
+  </em>
+</p>
 
-This project combines **FastAPI**, **Python automation scripts**, **PowerShell collectors**, and a lightweight **incident timeline dashboard** to demonstrate:
+---
 
-- IT engineering foundations
-- backend/API development
-- automated diagnostics
-- event tracking
-- log analysis
-- system-level troubleshooting processes
+## Abstract
 
-## Features
+This project presents a complete machine learning pipeline that spans data preprocessing,
+model training, quantitative evaluation, and deployment for inference via a REST API.
+The goal is to demonstrate how experimental machine learning workflows can be translated
+into reproducible, deployable systems while preserving evaluation rigor.
 
-- `/api/health` – simple health check
-- `/api/system/info` – system hostname, OS, uptime, CPU, memory, and disk usage
-- `/api/network/ping` – basic ping diagnostic endpoint
-- `/api/incidents` – create & list incidents with severity, source, and category
-- `/api/events` – create & list event logs
-- Python automation scripts for diagnostics & log parsing
-- PowerShell scripts for Windows event log collection and basic remediation
-- Simple HTML/CSS/JS dashboard to visualize system info, incidents, and events
+---
 
-## Run locally
+## Problem Definition
 
-### Backend
+Machine learning models are often evaluated in isolation but deployed in real-world systems
+where reproducibility, monitoring, and inference constraints matter.
+This project addresses the problem of **bridging experimental model development with
+production-ready deployment**, focusing on transparent evaluation and modular design.
+
+---
+
+## Methodology
+
+### Pipeline Overview
+1. Data preprocessing and feature preparation  
+2. Model training and hyperparameter selection  
+3. Quantitative evaluation using multiple metrics  
+4. Model serialization and versioning  
+5. REST-based inference via API
+
+### Models
+- Baseline supervised learning models implemented using `scikit-learn`
+
+### Evaluation Metrics
+- Accuracy
+- F1-score
+- ROC-AUC (where applicable)
+
+Evaluation is conducted using train/test separation and standardized metrics
+to ensure comparability across models.
+
+---
+
+## System Architecture
+
+The pipeline is designed with a clear separation between:
+- **Training logic**
+- **Evaluation logic**
+- **Inference serving**
+
+This separation allows models to be retrained, compared, and deployed
+without modifying the serving layer.
+
+---
+
+## Reproducibility
+
+All experiments are reproducible:
+- Fixed random seeds
+- Explicit dependency specification
+- Modular scripts for training and evaluation
 
 ```bash
-cd backend
 pip install -r requirements.txt
-uvicorn app:app --host 0.0.0.0 --port 8000 --reload
-```
+python train_model.py
+python api.py
+Results
+Evaluation results demonstrate the performance trade-offs between models
+and validate the deployed inference pipeline.
 
-### Frontend
+Detailed metrics and logs can be reproduced by re-running the training script.
 
-```bash
-cd frontend
-# Serve index.html or open directly in a browser
-```
+Future Work
+Extend the pipeline to support multiple model versions
 
-## Docker
+Integrate experiment tracking and logging
 
-From project root:
+Explore robustness and data quality analysis
 
-```bash
-docker-compose up --build
-```
-
-This starts:
-
-- `backend` on `http://localhost:8000`
-- `frontend` dashboard on `http://localhost:8081`
+Add automated evaluation pipelines
